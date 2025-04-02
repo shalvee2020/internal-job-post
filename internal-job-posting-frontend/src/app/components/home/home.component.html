@@ -1,28 +1,69 @@
-<div class="home-container">
-  <header class="header">
-    <h1>Welcome to Talent Quest</h1>
-    <p>Your one-stop solution for job postings and candidate management.</p>
-  </header>
-  <section class="features">
-    <div class="feature">
-      <h2>View Candidates</h2>
-      <p>Browse and manage candidate applications.</p>
-      <a routerLink="/candidates" class="btn">View Candidates</a>
+<div class="container-fluid body-background">
+  <div class="header">
+    <h1>Welcome to Job Portal</h1>
+
+  </div>
+  <div class="Wrapper ">
+    <div>
+      <div class="logoContainer">
+        <img src="https://static.naukimg.com/s/7/103/i/search.9ec0e1ac.svg" id="searchIcon">
+        <input type="text" placeholder="Enter Skills / companies" class="sugginput"
+               id="input1">
+        <div class="pipe1"></div>
+        <input type="text" placeholder="Enter location" class="sugginput" id="input2">
+        <div class="pipe1"></div>
+        <select id="input3" class="sugginput">
+          <option value="" hidden="">Select Experience</option>
+          <!-- Available Options -->
+          <option value="1">Freshers</option>
+          <option value="2">1 year</option>
+          <option value="3">2 years</option>
+          <option value="4">3 years</option>
+          <option value="5">4 years</option>
+          <option value="6">5 years</option>
+
+        </select>
+
+        <input type="submit" class="search" value="Search">
+      </div>
     </div>
-    <div class="feature">
-      <h2>View Jobs</h2>
-      <p>Check all the live jobs and get employed now.</p>
-      <a routerLink="/jobs" class="btn">View Jobs</a>
+  </div>
+  <div id="Slidhsow-container">
+
+    <div id="main-slider">
+      <!-- --left arrow  -->
+
+      <div class="slide" id="c1" onclick="window.open('','mywindow');"
+           style="cursor: pointer; display: inline-block;">
+        <div class="images">
+          <img src="https://static.naukimg.com/s/0/0/i/trending-naukri/remote.svg">
+        </div>
+        <div class="text">
+          <h6>Remote </h6>
+
+        </div>
+      </div>
+      <div class="slide" id="c2" onclick="window.open('','mywindow');"
+           style="cursor: pointer; display: inline-block;">
+        <div class="images">
+          <img src="https://static.naukimg.com/s/0/0/i/trending-naukri/mnc.svg">
+        </div>
+        <div class="text">
+          <h6>MNC</h6>
+
+        </div>
+      </div>
+
+      <div class="slide" id="c3" onclick="window.open('','mywindow');"
+           style="cursor: pointer; display: inline-block;">
+        <div class="images">
+          <img src="https://static.naukimg.com/s/0/0/i/trending-naukri/engineering.svg">
+        </div>
+        <div class="text">
+          <h6>Engineering</h6>
+
+        </div>
+      </div>
     </div>
-    <div class="feature">
-      <h2>Post a Job</h2>
-      <p>Create and manage job postings easily.</p>
-      <a routerLink="/create-job" class="btn">Create a Job</a>
-    </div>
-    <div class="feature">
-      <h2>Register Candidate</h2>
-      <p>Not yet a registered candidate? Register now</p>
-      <a routerLink="/registration" class="btn">Register Candidate</a>
-    </div>
-  </section>
+  </div>
 </div>

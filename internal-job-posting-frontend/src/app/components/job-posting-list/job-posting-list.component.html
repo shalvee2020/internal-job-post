@@ -1,102 +1,97 @@
-<div class="job-listings-container">
-  <h2 class="title">Available Job Postings</h2>
+<div class="container-fluid body-background">
+  <div class="container pt-3">
+    <div class="row">
 
-  <div class="filters">
-    <div class="filter-item">
-      <label for="locationFilter">Location</label>
-      <div class="filter-input-wrapper">
-        <input
-          type="text"
-          id="locationFilter"
-          class="form-control"
-          placeholder="Filter by location"
-          [(ngModel)]="locationFilter"
-          (keyup.enter)="searchByLocation()">
-        <button (click)="searchByLocation()" class="btn btn-outline-primary">Search</button>
-      </div>
-    </div>
-
-    <div class="filter-item">
-      <label for="departmentFilter">Department</label>
-      <div class="filter-input-wrapper">
-        <input
-          type="text"
-          id="departmentFilter"
-          class="form-control"
-          placeholder="Filter by department"
-          [(ngModel)]="departmentFilter"
-          (keyup.enter)="searchByDepartment()">
-        <button (click)="searchByDepartment()" class="btn btn-outline-primary">Search</button>
-      </div>
-    </div>
-
-    <div class="filter-item">
-      <label for="employmentTypeFilter">Employment Type</label>
-      <div class="filter-input-wrapper">
-        <select
-          id="employmentTypeFilter"
-          class="form-control"
-          [(ngModel)]="employmentTypeFilter"
-          (change)="searchByEmploymentType()">
-          <option value="">All Employment Types</option>
-          <option *ngFor="let type of employmentTypes" [value]="type">{{ type }}</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="reset-filter">
-      <button (click)="resetFilters()" class="btn btn-secondary">Reset All Filters</button>
-    </div>
-  </div>
-
-  <div *ngIf="loading" class="loading">
-    <div class="spinner-border text-primary" role="status">
-      <span class="sr-only">Loading...</span>
-    </div>
-  </div>
-
-  <div *ngIf="error" class="alert alert-danger">
-    {{ error }}
-  </div>
-
-  <div *ngIf="!loading && jobPostings.length === 0" class="no-results">
-    <p>No job postings found matching your criteria.</p>
-  </div>
-
-  <div class="job-list">
-    <div *ngFor="let job of jobPostings" class="job-card">
-      <div class="job-header">
-        <h3>{{ job.title }}</h3>
-        <div class="job-actions">
-          <button (click)="deleteJob(job.id)" class="btn btn-sm btn-danger">Delete</button>
+      <!-- Filter Section -->
+      <div class="col-3 filter">
+        <div class="card">
+          <div class="card-body text-center">
+            <h6>All Filters</h6>
+          </div>
         </div>
       </div>
 
-      <div class="job-details">
-        <div class="detail-row">
-          <span class="label">Department:</span>
-          <span class="value">{{ job.department }}</span>
+      <!-- Job Listings -->
+      <div class="col-6 job">
+
+        <!-- Job Card -->
+        <div class="job-card mb-3">
+          <div class="card">
+            <div class="card-body">
+              <a href="job-detail.html" class="text-decoration-none text-dark">
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="mb-0">Java Full Stack Developer | 5+ YRS</h6>
+                    <a href="#">Ford</a>
+                  </div>
+                  <div class="col-4 text-end">
+                    <img class="compo_logo" src="/images/247012.png" alt="Company Logo">
+                  </div>
+                </div>
+                <div class="row mt-2">
+                  <div class="col-4"><i class="fa fa-suitcase"></i> 1-2 Years</div>
+                  <div class="col-4"><i class="fa fa-inr"></i> 3-5 Lacs</div>
+                  <div class="col-4"><i class="fa fa-map-marker"></i> Pune</div>
+                </div>
+                <div class="row pt-1">
+                  <div class="col-12">
+                    <i class="fa fa-file-text-o"></i> <span class="text-muted">Bachelors or Masters Degree in CS...</span>
+                  </div>
+                </div>
+                <div class="row pt-1">
+                  <div class="col-6"><small>Few Hours Ago</small></div>
+                  <div class="col-6 text-end"><i class="fa fa-bookmark"></i></div>
+                </div>
+              </a>
+            </div>
+          </div>
         </div>
 
-        <div class="detail-row">
-          <span class="label">Location:</span>
-          <span class="value">{{ job.location }}</span>
+        <!-- Duplicate Job Listings (Can be repeated dynamically) -->
+        <div class="job-card mb-3">
+          <div class="card">
+            <div class="card-body">
+              <a href="#" class="text-decoration-none text-dark">
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="mb-0">Java Full Stack Developer | 5+ YRS</h6>
+                    <a href="#">Ford</a>
+                  </div>
+                  <div class="col-4 text-end">
+                    <img class="compo_logo" src="/images/247012.png" alt="Company Logo">
+                  </div>
+                </div>
+                <div class="row mt-2">
+                  <div class="col-4"><i class="fa fa-suitcase"></i> 1-2 Years</div>
+                  <div class="col-4"><i class="fa fa-inr"></i> 3-5 Lacs</div>
+                  <div class="col-4"><i class="fa fa-map-marker"></i> Pune</div>
+                </div>
+                <div class="row pt-1">
+                  <div class="col-12">
+                    <i class="fa fa-file-text-o"></i> <span class="text-muted">Bachelors or Masters Degree in CS...</span>
+                  </div>
+                </div>
+                <div class="row pt-1">
+                  <div class="col-6"><small>Few Hours Ago</small></div>
+                  <div class="col-6 text-end"><i class="fa fa-bookmark"></i></div>
+                </div>
+              </a>
+            </div>
+          </div>
         </div>
 
-        <div class="detail-row">
-          <span class="label">Salary:</span>
-          <span class="value">{{ job.salary | currency }}</span>
-        </div>
+      </div>
 
-        <div class="detail-row">
-          <span class="label">Employment Type:</span>
-          <span class="value">{{ job.employmentType }}</span>
+      <!-- Top Companies Hiring -->
+      <div class="col-3 filter">
+        <div class="card">
+          <div class="card-body text-center">
+            <h6>Top Companies Hiring</h6>
+          </div>
         </div>
       </div>
 
-      <div class="job-description">
-        <p>{{ job.description }}</p>
-      </div>
     </div>
   </div>
 </div>
+

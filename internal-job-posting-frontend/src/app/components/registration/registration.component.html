@@ -1,73 +1,57 @@
-<div class="registration-container">
-  <div class="card">
-    <h2>Candidate Registration</h2>
+<div class="container">
+  <h3 class="text-center mb-4">Register a new Candidate</h3>
+  <div class="row justify-content-center">
+    <div class="col-md-7 col-lg-5 p-4 border rounded bg-light shadow">
+      <form (ngSubmit)="register()">
+        <div class="mb-3">
+          <label class="form-label">Name</label>
+          <input [(ngModel)]="candidate.name" name="name" type="text" class="form-control" placeholder="Enter your full name" required />
+        </div>
 
-    <div *ngIf="submitSuccess" class="alert success">
-      Registration successful! Redirecting to candidates list...
+        <div class="mb-3">
+          <label class="form-label">Email Address</label>
+          <input [(ngModel)]="candidate.email" name="email" type="email" class="form-control" placeholder="Enter your email" required />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Password</label>
+          <input [(ngModel)]="candidate.password" name="password" type="password" class="form-control" placeholder="Enter your password" required />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Years of Experience</label>
+          <select [(ngModel)]="candidate.experience" name="experience" class="form-select" required>
+            <option value="">Select experience level</option>
+            <option>Less than a year</option>
+            <option>1 - 2 years</option>
+            <option>2 - 4 years</option>
+            <option>4 - 7 years</option>
+            <option>7 - 10 years</option>
+            <option>10+ years</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Resume Link</label>
+          <input [(ngModel)]="candidate.resume" name="resume" type="url" class="form-control" placeholder="Enter your resume URL" required />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Work Preference</label>
+          <div class="form-check">
+            <input type="radio" [(ngModel)]="candidate.remote" name="remote" value="yes" class="form-check-input" checked />
+            <label class="form-check-label">Remote</label>
+          </div>
+          <div class="form-check">
+            <input type="radio" [(ngModel)]="candidate.remote" name="remote" value="no" class="form-check-input" />
+            <label class="form-check-label">Onsite</label>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary w-100">Register</button>
+        </div>
+      </form>
     </div>
-
-    <div *ngIf="submitError" class="alert error">
-      {{ submitError }}
-    </div>
-
-    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="name">Full Name *</label>
-        <input
-          type="text"
-          id="name"
-          formControlName="name"
-          placeholder="Enter your Full Name"
-          [class.invalid]="nameControl?.invalid && nameControl?.touched">
-        <div class="error-message" *ngIf="nameControl?.invalid && nameControl?.touched">
-          <span *ngIf="nameControl?.errors?.['required']">Name is required</span>
-          <span *ngIf="nameControl?.errors?.['minlength']">Name must be at least 2 characters</span>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="email">Email Address *</label>
-        <input
-          type="email"
-          id="email"
-          formControlName="email"
-          placeholder="Enter your Email Address"
-          [class.invalid]="emailControl?.invalid && emailControl?.touched">
-        <div class="error-message" *ngIf="emailControl?.invalid && emailControl?.touched">
-          <span *ngIf="emailControl?.errors?.['required']">Email is required</span>
-          <span *ngIf="emailControl?.errors?.['email']">Please enter a valid email address</span>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="resume">Resume URL *</label>
-        <input
-          type="text"
-          id="resumeUrl"
-          formControlName="resumeUrl"
-          placeholder="Enter your Resume URL"
-          [class.invalid]="resumeUrlControl?.invalid && resumeUrlControl?.touched">
-        <div class="error-message" *ngIf="resumeUrlControl?.invalid && resumeUrlControl?.touched">
-          <span *ngIf="resumeUrlControl?.errors?.['required']">Resume is required</span>
-          <span *ngIf="resumeUrlControl?.errors?.['email']">Please enter a valid resume url</span>
-        </div>
-      </div>
-
-      <div class="form-actions">
-        <button
-          type="submit"
-          [disabled]="isSubmitting"
-          class="submit-button">
-          <span *ngIf="!isSubmitting">Register</span>
-          <span *ngIf="isSubmitting">Registering...</span>
-        </button>
-        <button
-          type="button"
-          class="cancel-button"
-          routerLink="/candidates">
-          Cancel
-        </button>
-      </div>
-    </form>
   </div>
 </div>
