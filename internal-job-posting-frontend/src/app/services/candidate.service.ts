@@ -11,16 +11,19 @@ export class CandidateService {
 
   constructor(private http: HttpClient) {}
 
+  register(name: string,email: string,password: string,experience: string,resumeurl:string): Observable<string> {
+    const registerdata = {name,email,password,experience,resumeurl};
+    return this.http.post<any>(this.apiUrl, registerdata,{ responseType: 'text' as 'json' });
+  }
+ login(email: string, password: string) {
+  const loginData = { email, password };
+    return this.http.post<any>(`${this.apiUrl}\login`, loginData,{ responseType: 'text' as 'json' });
+  }
   getCandidates(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
   }
-
-  registerCandidate(candidate: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl, candidate);
+  registerCandidates(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl);
   }
- login(candidate: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl, candidate);
-  }
-
 
 }

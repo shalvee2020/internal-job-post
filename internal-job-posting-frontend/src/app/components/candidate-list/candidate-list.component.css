@@ -4,52 +4,62 @@
   margin: 0 auto;
   padding: 20px;
   font-family: Arial, sans-serif;
+  height: 100vh;
 }
 
 /* Heading for the candidate list */
 .candidate-list-container h2 {
   text-align: center;
-  color: #4A5568; /* Dark gray */
+  color: #06132a; /* Dark gray */
   margin-bottom: 20px;
 }
 
-/* List styling */
-.candidate-list {
-  list-style: none;
-  padding: 0;
-}
-
-/* Individual candidate card styling */
-.candidate-card {
-  background-color: #EDF2F7; /* Light gray */
-  border: 1px solid #CBD5E0; /* Medium gray */
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
   border-radius: 8px;
-  padding: 15px;
-  margin-bottom: 15px;
-  transition: box-shadow 0.3s ease;
+  overflow: hidden;
 }
 
-.candidate-card:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* Table header */
+thead {
+  background-color: #4C51BF; /* Purple */
+  color: white;
 }
 
-/* Candidate header styling */
-.candidate-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #CBD5E0; /* Medium gray */
 }
 
-.candidate-name {
-  font-size: 1.2em;
-  color: #2D3748; /* Dark gray */
-  margin: 0;
+/* Alternating row colors */
+tbody tr:nth-child(even) {
+  background-color: #F7FAFC; /* Very light gray */
 }
 
-.candidate-skills {
-  font-size: 0.9em;
-  color: #4C51BF; /* Purple */
-  background-color: #EBF4FF; /* Light blue */
+tbody tr:hover {
+  background-color: #EDF2F7; /* Light gray */
+}
+
+/* Status badges */
+.status-badge {
   padding: 5px 10px;
   border-radius: 12px;
+  font-size: 0.9em;
+  font-weight: bold;
+  text-align: center;
+  display: inline-block;
+}
+
+.shortlisted {
+  background-color: #C6F6D5; /* Light green */
+  color: #2F855A; /* Dark green */
+}
+
+.not-shortlisted {
+  background-color: #FED7D7; /* Light red */
+  color: #C53030; /* Dark red */
 }

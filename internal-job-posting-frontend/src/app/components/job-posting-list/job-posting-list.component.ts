@@ -1,29 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { JobService } from '../../services/job.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+
 @Component({
   selector: 'app-job-list',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [ CommonModule],
   templateUrl: './job-posting-list.component.html',
   styleUrls: ['./job-posting-list.component.css']
 })
-export class JobPostingListComponent implements OnInit {
-  jobs: any[] = [];
+export class JobPostingListComponent implements OnInit{ 
+jobs: any[] = [];
 
-  constructor(private jobService: JobService) {}
+  constructor(private jobservice: JobService) {}
 
-  ngOnInit() {
-    this.fetchJobs();
-  }
-
-  fetchJobs() {
-    this.jobService.getJobs().subscribe(data => {
-      this.jobs = data;
-    }, error => {
-      console.error('Error fetching jobs:', error);
+  ngOnInit(): void {
+    this.jobservice.getJobs().subscribe(response => {
+      if (Array.isArray(response)) {
+        this.jobs = response;
+        console.log(this.jobs);
+      } else {
+        console.error('Expected an array but received:', response);
+      }
     });
   }
 }

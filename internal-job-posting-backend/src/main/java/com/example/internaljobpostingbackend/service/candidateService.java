@@ -1,16 +1,27 @@
 package com.example.internaljobpostingbackend.service;
 
 import com.example.internaljobpostingbackend.model.Candidate;
+import com.example.internaljobpostingbackend.repository.CandidateRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
-import java.util.Optional;
 
 @Service
-public interface candidateService {
-    Candidate saveCandidate(Candidate candidate);
-    Optional<Candidate> getCandidateById(Long id);
-    List<Candidate> getAllCandidates();
-    Candidate updateCandidate(Long id, Candidate candidateDetails);
-    void deleteCandidateById(Long id);
-    void deleteCandidateByEmail(String email);
+public class candidateService {
+
+    @Autowired
+    private CandidateRepository candidateRepository;
+
+    public Candidate findByEmail(String email) {
+        return candidateRepository.findByEmail(email);
+    }
+
+    public void saveCandidate(Candidate candidate) {
+        candidateRepository.save(candidate);
+    }
+
+    public List<Candidate> listCandidates() {
+        return candidateRepository.findAll();
+    }
 }

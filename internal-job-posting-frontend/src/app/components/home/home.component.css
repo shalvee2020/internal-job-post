@@ -3,3 +3,10 @@
   visibility: visible !important;
   opacity: 1 !important;
 }
+
+.body-background{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}

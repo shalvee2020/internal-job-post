@@ -25,7 +25,7 @@ export class LoginComponent {
   login() {
 
 
-    this.candidateService.login(this.user).subscribe((res:any) => {
+    this.candidateService.login(this.user.email, this.user.password).subscribe((res:any) => {
 
         if(res.result){
           alert('Login successful!');
